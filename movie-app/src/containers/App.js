@@ -17,9 +17,14 @@ function App () {
 		const responseJson = await response.json();
 
 		if (responseJson.Search) {
-			setMovies(responseJson.Search);
+        const yearArray = responseJson.Search.map((movie)=>{
+               return movie.Year;
+    })
+        const sortedList = yearArray.sort();
+            setMovies(responseJson.Search);
+            console.log(sortedList)
 		}
-        console.log(responseJson.Search[0].imdbID)
+    
 	};
 
    
