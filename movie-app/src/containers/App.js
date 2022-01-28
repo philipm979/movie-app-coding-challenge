@@ -21,6 +21,7 @@ function App () {
                 return b.year - a.year; }
             )
                 setMovies(sortedList);
+                console.log(sortedList);
                 
             }
     //     const yearArray = responseJson.Search.map((movie)=>{
