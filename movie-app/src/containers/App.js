@@ -17,13 +17,19 @@ function App () {
 		const responseJson = await response.json();
 
 		if (responseJson.Search) {
-        const yearArray = responseJson.Search.map((movie)=>{
-               return movie.Year;
-    })
-        const sortedList = yearArray.sort();
-            setMovies(responseJson.Search);
-            console.log(sortedList)
-		}
+            const sortedList = responseJson.Search.sort((a,b)=>{
+                return (Number(b.year) - Number(a.year)); })
+                setMovies(sortedList)
+                console.log(sortedList)
+            }
+    //     const yearArray = responseJson.Search.map((movie)=>{
+    //            return movie.Year;
+    // })
+    //     const sortedList = yearArray.sort();
+    //         setMovies(responseJson.Search);
+    //         console.log(sortedList)
+	// 	}
+            
     
 	};
 
@@ -38,12 +44,12 @@ function App () {
 
     return (   
             <div className ='tc'>
-            <body>
+            
                 <h1 className = 'f1 font'>Movies</h1>
                     <SearchBox searchChange={onSearchChange}/>
                     <MovieList movies={movies}
                     />
-            </body>
+            
              </div>
             );
         }
