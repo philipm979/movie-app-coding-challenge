@@ -11,6 +11,8 @@ return (
                 <MovieCard
                 title = {movies[i].Title} 
                 img = {movies[i].Poster}
+                id = {movies[i].imdbID}
+
                 />
             );
         })              
