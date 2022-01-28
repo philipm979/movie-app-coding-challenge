@@ -18,9 +18,10 @@ function App () {
 
 		if (responseJson.Search) {
             const sortedList = responseJson.Search.sort((a,b)=>{
-                return (Number(b.year) - Number(a.year)); })
-                setMovies(sortedList)
-                console.log(sortedList)
+                return b.year - a.year; }
+            )
+                setMovies(sortedList);
+                
             }
     //     const yearArray = responseJson.Search.map((movie)=>{
     //            return movie.Year;
