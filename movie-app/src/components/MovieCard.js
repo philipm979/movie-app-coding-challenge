@@ -1,24 +1,21 @@
 import React from 'react';
+import './MovieCard.css';
 
 
-const MovieCard = ({title, img, id}) => {
-console.log(id)
+const MovieCard = ({year, img, id, title}) => {
+
 
 
 return (
-        <div>
-            <h2 className="font">{title}</h2>
-            <div>
+  
+    <div className="grid">
             <a href={`https://www.imdb.com/title/${id}/`}>
-            <img alt='movie' src={img} style={{height: "100%", width: "100%", maxWidth: "300px"}}/>
+                <img alt={title} src={img} className="img-size"/>
             </a>
-            </div>
-
-        </div>
-    )
-
-    
+    </div>
    
+        )
+
 };
 
 export default MovieCard;

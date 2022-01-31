@@ -2,46 +2,39 @@ import React, { useState, useEffect } from 'react';
 import MovieList from '../components/MovieList'
 import SearchBox from '../components/SearchBox';
 import './App.css';
+import worker from "./worker.js";
+import WebWorker from "./workerSetup";
 
-function App () {
+
+export default function App () {
+    
+    const sortWorker = new WebWorker(worker);
    
-
     const [movies, setMovies] = useState([])
     const [value, setValue] = useState("")
   
-    
     const getMovieRequest = async (value) => {
 		const url = `http://www.omdbapi.com/?s=${value}&apikey=263d22d8`;
 
 		const response = await fetch(url);
 		const responseJson = await response.json();
-
+        
 		if (responseJson.Search) {
-            const sortedList = responseJson.Search.sort((a,b)=>{
-                return a.Year - b.Year; }
-            )
-                setMovies(sortedList);
-                console.log(sortedList);
-                
+            sortWorker.postMessage(responseJson.Search);
+            sortWorker.onmessage = (e) => {
+                setMovies(e.data)
             }
-    //     const yearArray = responseJson.Search.map((movie)=>{
-    //            return movie.Year;
-    // })
-    //     const sortedList = yearArray.sort();
-    //         setMovies(responseJson.Search);
-    //         console.log(sortedList)
-	// 	}
-            
-    
-	};
 
-   
+        }
+    }
+        
+    
     useEffect(() => {
 		getMovieRequest(value);
 	}, [value]);
 
     const onSearchChange = (event) => {
-       setValue(event.target.value)
+       setValue(event.target.value);
     }
 
     return (   
@@ -56,8 +49,3 @@ function App () {
             );
         }
     
-
-  
-
-    
-export default App; 
