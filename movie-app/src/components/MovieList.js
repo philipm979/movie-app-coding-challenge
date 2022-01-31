@@ -1,10 +1,11 @@
 import React from 'react';
 import MovieCard from './MovieCard';
+import './MovieCard.css';
 
 const MovieList = ({movies}) => {
    
 return (
-<div style={{display: 'flex', flexWrap: "wrap", padding: "20px"}}>
+<div className="grid">
     {
        movies?.map ((movie,i) => {
             return (
@@ -12,6 +13,7 @@ return (
                 img = {movies[i].Poster}
                 id = {movies[i].imdbID}
                 title ={movies[i].Title}
+                year ={movies[i].Year}
 
                 />
             );
@@ -22,3 +24,5 @@ return (
 export default MovieList; 
 
 // Movies Array
+
+// {display: 'flex', flexWrap: "wrap", padding: "20px"}
