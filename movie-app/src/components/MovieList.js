@@ -8,8 +8,7 @@ return (
     {
        movies?.map ((movie,i) => {
             return (
-                <MovieCard
-                year = {movies[i].Year} 
+                <MovieCard 
                 img = {movies[i].Poster}
                 id = {movies[i].imdbID}
                 title ={movies[i].Title}
