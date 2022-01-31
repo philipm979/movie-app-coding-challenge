@@ -25,4 +25,3 @@ export default MovieList;
 
 // Movies Array
 
-// {display: 'flex', flexWrap: "wrap", padding: "20px"}
