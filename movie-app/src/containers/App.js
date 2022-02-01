@@ -23,6 +23,7 @@ export default function App () {
             sortWorker.postMessage(responseJson.Search);
             sortWorker.onmessage = (e) => {
                 setMovies(e.data)
+                console.log(e.data)
             }
 
         }

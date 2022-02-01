@@ -6,22 +6,30 @@ const MovieList = ({movies}) => {
    
 return (
 <div className="grid">
-    {
-       movies?.map ((movie,i) => {
-            return (
-                <MovieCard 
-                img = {movies[i].Poster}
-                id = {movies[i].imdbID}
-                title ={movies[i].Title}
-                year ={movies[i].Year}
+{
+ Object.keys(movies).map((key,i) =>{
+        return (
+            <div key ={key}>
+            <h1 className='font'>{key}</h1>
+            
+            {movies[key].map((item,i)=>{
+                return (
+                    <MovieCard 
+                    img = {item.Poster}
+                    id = {item.imdbID}
+                    title ={item.Title}/>
+                    )
+                })}
+            </div>
 
-                />
-            );
-        })              
-    }
-</div>
-)}
+        )
+ })}
+</div>)
+}
+
+
 export default MovieList; 
-
-// Movies Array
+    
+    
+//   Movies Array 
 
